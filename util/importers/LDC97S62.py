@@ -45,9 +45,9 @@ def read_data_sets(data_dir, train_csvs, dev_csvs, test_csvs,
         d2 = _maybe_split_wav_and_sentences(data_dir, "swb_ms98_transcriptions", "swb1_d2-wav", "swb1_d2-split-wav")
         d3 = _maybe_split_wav_and_sentences(data_dir, "swb_ms98_transcriptions", "swb1_d3-wav", "swb1_d3-split-wav")
         d4 = _maybe_split_wav_and_sentences(data_dir, "swb_ms98_transcriptions", "swb1_d4-wav", "swb1_d4-split-wav")
-        
+
         swb_files = d1.append(d2).append(d3).append(d4)
-        
+
         train_files, dev_files, test_files = _split_sets(swb_files)
 
         # Write sets to disk as CSV files
@@ -175,7 +175,7 @@ def _maybe_split_wav_and_sentences(data_dir, trans_data, original_data, converte
 
             # Close origAudio
             origAudio.close()
-    
+
     return pandas.DataFrame(data=files, columns=["wav_filename", "wav_filesize", "transcript"])
 
 def _split_wav(origAudio, start_time, stop_time, new_wav_file):

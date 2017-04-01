@@ -52,7 +52,7 @@ def read_data_sets(data_dir, train_csvs, dev_csvs, test_csvs,
         # Conditionally split Fisher data into train/validation/test sets
         train_2004, dev_2004, test_2004 = _split_sets(data_dir, "fisher-2004-split-wav", "fisher-2004-split-wav-sets")
         train_2005, dev_2005, test_2005 = _split_sets(data_dir, "fisher-2005-split-wav", "fisher-2005-split-wav-sets")
-        
+
         # The following file has an incorrect transcript that is much longer than
         # the audio source. The result is that we end up with more labels than time
         # slices, which breaks CTC. We fix this directly since it's a single occurrence
@@ -165,7 +165,7 @@ def _split_wav_and_sentences(data_dir, trans_data, original_data, converted_data
 
                 channel = 0 if segment["speaker"] == "A:" else 1
                 _split_wav(origAudios[channel], start_time, stop_time, new_wav_file)
-                
+
                 new_wav_filesize = os.path.getsize(new_wav_file)
                 transcript = validate_label(segment["transcript"])
                 if transcript != None:
@@ -200,7 +200,7 @@ def _split_sets(filelist):
 
     test_beg = dev_end
     test_end = len(filelist)
-    
+
     return filelist[train_beg:train_end],
            filelist[dev_beg:dev_end],
            filelist[test_beg:test_end]

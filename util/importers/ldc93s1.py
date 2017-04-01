@@ -35,7 +35,7 @@ def read_data_sets(data_dir, train_csvs, dev_csvs, test_csvs,
         trans_file = base.maybe_download(LDC93S1_BASE + ".txt", data_dir, LDC93S1_BASE_URL + LDC93S1_BASE + ".txt")
         with open(trans_file, "r") as fin:
             transcript = ' '.join(fin.read().strip().lower().split(' ')[2:]).replace('.', '')
-        
+
         df = pandas.DataFrame(data=[(local_file, path.getsize(local_file), transcript)],
                               columns=["wav_filename", "wav_filesize", "transcript"])
         df.to_csv(path.join(data_dir, "ldc93s1.csv"), index=False)

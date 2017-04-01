@@ -201,7 +201,7 @@ def _convert_audio_and_split_sentences(extracted_dir, data_set, dest_dir):
                     # Parse each segment line
                     first_space = line.find(" ")
                     seqid, transcript = line[:first_space], line[first_space+1:]
-                    
+
                     transcript = unicodedata.normalize("NFKD", transcript)  \
                                             .encode("ascii", "ignore")      \
                                             .decode("ascii", "ignore")
